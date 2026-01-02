@@ -4,7 +4,6 @@ import joblib
 import os
 import matplotlib.pyplot as plt
 import seaborn as sns
-import plotly.express as px
 from groq import Groq
 
 # Page Config
@@ -153,10 +152,12 @@ with tabs[2]:
     trend_crop = st.selectbox("Analyze Crop", sorted(df['Crop'].unique()), key='trend')
     trend_data = df[df['Crop'] == trend_crop]
     
-    fig2 = px.scatter(
-        trend_data, x="Actual_Rainfall", y="Production", 
-        color="Season", size="Area", 
-        hover_data=["District_Name", "Crop_Year"],
-        title=f"Rainfall vs Production Analysis: {trend_crop}"
+    fig, ax = plt.subplots(figsize=(10, 6))
+    sns.scatterplot(
+        data=trend_data, x="Actual_Rainfall", y="Production", 
+        hue="Season", size="Area", sizes=(20, 200), alpha=0.7, ax=ax
     )
-    st.plotly_chart(fig2, use_container_width=True)
+    ax.set_title(f"Rainfall vs Production Analysis: {trend_crop}")
+    ax.set_xlabel("Rainfall (mm)")
+    ax.set_ylabel("Production (Tonnes)")
+    st.pyplot(fig)
