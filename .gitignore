@@ -1,0 +1,41 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual Environment
+venv/
+.venv/
+
+# Project Specific
+old data/
+.gemini/
+.agent/
+python_implementation/__pycache__/
+python_implementation/src/__pycache__/
+
+# Secrets - IMPORTANT!
+# Never commit secrets to git
+secrets.toml
+.env
+
+# VS Code
+.vscode/
